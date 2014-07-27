@@ -1,0 +1,16 @@
+<!--this is the base template that allows other templates to inherit core features-->
+<!-- the index.html will inherit from this template-->
+<html>
+ <head>
+ 	{% if title %}
+ 	<title>{{title}} - microblog</title>
+ 	{% else %}
+ 	<title>Zombocom! - you did not pass me a title</title>
+ 	{% endif %}
+ </head>
+ <body>
+ 	<div>Microblog: <a href="/index">Home</a></div>
+ 	<hr>
+ 	{% block content %}{% endblock %}
+ </body>
+</html>

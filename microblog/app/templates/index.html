@@ -1,0 +1,38 @@
+<!--this is the first template 
+<html>
+ <head>
+ 	<title>{{title}} - microblog</title>
+ </head>
+ <body>
+ 	<h1>Hello, {{user.nickname}}!</h1>
+ </body>
+</html> -->
+
+<!-- user Jinja to set control statements in a template-->
+<!--<html>
+ <head>
+ 	{%if title%} 
+ 	<title>{{title}} - microblog</title>
+ 	{% else %} 
+ 	<title>Welcome to Zombocom</title>
+ 	{% endif %}
+ </head>
+ <body>
+ 	<h1>Greetings, {{user.nickname}}!</h1>
+ 	{% for post in posts %} 
+ 	<p>{{post.author.nickname}} says: <b>{{post.body}}</b></p> 
+ 	{% endfor %} 
+ </body>
+</html>-->
+
+<!--inherit from the base template-->
+{% extends "base.html" %} <!--inherit form the base template-->
+{% block content %}
+<h1>Greetings, {{user.nickname}}!</h1>
+{% for post in posts %}
+<div><p>{{post.author.nickname}} says: <b>{{post.body}}</b></p></div>
+{% endfor %}
+{% endblock %}
+
+
+
