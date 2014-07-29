@@ -6,7 +6,7 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-	return "Hello Wolrd!"
+	return "Hello World!"
 
 # set the app routes for requests in module 2
 @app.route('/mod2')
