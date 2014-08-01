@@ -1,6 +1,13 @@
 # imports 
-from flask import render_template
+from flask import render_template, flash, redirect
 from app import app
+from forms import LoginForm 
+
+# set the app route for login in module 3
+@app.route('/login', methods = ['GET', 'POST']) # tells the app it can accecpt GET and POST
+def login():
+	form = LoginForm() 
+	return render_template('login.html', title = 'Sign In', form = form) 
 
 # set the app routes for requests in module 1
 @app.route('/')
