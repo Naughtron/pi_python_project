@@ -4,6 +4,8 @@ import requests
 import unittest
 import sys
 from selenium import webdriver
+# imports to run Selenium headless
+from pyvirtualdisplay import Display 
 
 # unit test class
 '''setup'''
@@ -67,23 +69,20 @@ class TestLoginIsUp(unittest.TestCase):
 		self.assertEqual(resp.status_code, 200)
 		
 
-'''# selenium test for /mod2 
-   # note the suggestion of using export DISPLAY=:0 prior to running did not work
+# selenium test for /mod2 
 # verify: posts, and page name
 class TestMod2Selenium(unittest.TestCase):
 	def setUp(self):
-		# suggestion from Cloin in the Boston Python Group
-		profile = webdriver.FirefoxProfile()
-		profile.native_envents_enabled = False 
-		self.driver = webdriver.Firefox(profile)
-		# ok that did not work, but at least its a new error! 
+		self.display = Display(visible=0, size=(800, 600))
+		self.display.start()
+		self.driver = webdriver.Firefox()
 
 	def test_validate_page_elements(self):
 		driver = self.driver
-		driver.get("127.0.0.1:5000/mod2")
+		driver.get("http://127.0.0.1:5000/mod2")
 		self.assertIn("Home - microblog", driver.title)
 	def tearDown(self):
-		self.driver.close()'''
+		self.driver.close()
 
 
 if __name__ == '__main__':
