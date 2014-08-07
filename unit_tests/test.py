@@ -72,7 +72,11 @@ class TestLoginIsUp(unittest.TestCase):
 # verify: posts, and page name
 class TestMod2Selenium(unittest.TestCase):
 	def setUp(self):
-		self.driver = webdriver.Firefox()
+		# suggestion from Cloin in the Boston Python Group
+		profile = webdriver.FirefoxProfile()
+		profile.native_envents_enabled = False 
+		self.driver = webdriver.Firefox(profile)
+		# ok that did not work, but at least its a new error! 
 
 	def test_validate_page_elements(self):
 		driver = self.driver
