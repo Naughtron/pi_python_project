@@ -77,12 +77,29 @@ class TestMod2Selenium(unittest.TestCase):
 		self.display.start()
 		self.driver = webdriver.Firefox()
 
+	# simple verification of page title 
 	def test_validate_page_elements(self):
 		driver = self.driver
 		driver.get("http://127.0.0.1:5000/mod2")
 		self.assertIn("Home - microblog", driver.title)
 	def tearDown(self):
 		self.driver.close()
+		self.display.stop()
+
+class TestMod2HomeClick(unittest.TestCase):
+	# test setup
+	def setUp(self):
+		self.display = Display(visible=0, size=(800, 600))
+		self.display.start()
+		self.driver = webdriver.Firefox()
+	# test
+	def test_validate_click_home(self):
+		driver = self.driver
+		driver.get("http://127.0.0.1:5000/mod2")
+		# find the home line
+		home_link = driver.find_element_by_css_selector('a[href="/index"]')
+		home_link.click()
+		#assertEqual(driver.title,"Home - microblog")
 
 if __name__ == '__main__':
     unittest.main()		
